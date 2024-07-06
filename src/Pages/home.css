@@ -1,0 +1,32 @@
+.relative {
+    position: relative;
+    z-index:2;
+  }
+  
+  .relative::after {
+    content: '';
+    background-color: white;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+ 
+  .relative::before {
+    content: '';
+    background-color: white; /* Assuming you want a red glow effect */
+    position: absolute;
+    top: -50px; /* Moves the glow up */
+    left: 52px; /* Keeps the glow centered horizontally */
+    width: 100% ;/* Extends the width to cover the entire element */
+    height: 100%;
+    border-radius: 50%; /* Adjust the height to be only a small strip for the top glow */
+    z-index: -2;
+    filter: blur(40px); /* Adjust the blur value for desired effect */
+    opacity: 0.6; /* Adjust opacity to control the glow intensity */
+
+  }
+  
+ 
