@@ -28,5 +28,92 @@
     opacity: 0.6; /* Adjust opacity to control the glow intensity */
 
   }
+
+  .code-card {
+    position: relative;
+    z-index: 2;
+  }
   
- 
+  .code-card::before {
+    content: '';
+    background: linear-gradient(300deg,  #4444ec, #8389e0); /* Gradient from red to reddish shades */
+    position: absolute;
+    width: 80%; /* Adjust width as needed */
+    height: 80%; /* Adjust height as needed */
+    border-radius: 50%; /* Keeps the glow centered horizontally */
+    z-index: -2;
+    filter: blur(60px); /* Adjust the blur value for desired effect */
+    opacity: 1; /* Adjust opacity to control the glow intensity */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the glow effect */
+    animation: gradient-animation 4s ease infinite;
+  }
+  .code-card-2 {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .code-card-2::before {
+    content: '';
+    background: linear-gradient(300deg,  red, #ff5601); /* Gradient from red to reddish shades */
+    position: absolute;
+    width: 80%; /* Adjust width as needed */
+    height: 80%; /* Adjust height as needed */
+    border-radius: 50%; /* Keeps the glow centered horizontally */
+    z-index: -2;
+    filter: blur(60px); /* Adjust the blur value for desired effect */
+    opacity: 1; /* Adjust opacity to control the glow intensity */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the glow effect */
+    animation: gradient-animation 4s ease infinite;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .sec-2bg {
+    background-image: url("../assets/media/wire-mesh-background.webp");
+    background-repeat: no-repeat; /* Ensures the background image is not repeated */
+    background-size: cover; /* Ensures the background image covers the entire area */
+    background-position: center; /* Centers the background image */
+    height: 250px; /* Default height for large screens */
+
+    @media (max-width: 768px) {
+        height: 180px; /* Height for medium screens */
+    }
+
+    @media (max-width: 480px) {
+        height: 120px; /* Height for small screens */
+    }
+}
+  .rhombus{
+    transform: rotate(8deg);
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  .image2 {
+    position: relative;
+    bottom: 8px;
+    z-index:2;
+  }
+  
+  .image2::after {
+    content: '';
+   background-image: url("../assets/media/diagonalgrid.png");
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
