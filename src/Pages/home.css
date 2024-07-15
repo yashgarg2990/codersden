@@ -16,7 +16,7 @@
  
   .relative::before {
     content: '';
-    background-color: white; /* Assuming you want a red glow effect */
+    background-color: cyan; /* Assuming you want a red glow effect */
     position: absolute;
     top: -50px; /* Moves the glow up */
     left: 52px; /* Keeps the glow centered horizontally */
@@ -117,3 +117,10 @@
     height: 100%;
     z-index: -1;
   }
+  .image3 {
+    position: relative;
+    bottom: 8px;
+    z-index:2;
+  }
+  
+ 

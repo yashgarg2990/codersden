@@ -9,7 +9,8 @@ import Banner from "../assets/media/homepage-video.mp4"
  import Colourtext from '../components/Homecomp/Colourtext';
  import bgimage from "../assets/media/wire-mesh-background.webp"
 import Timeline from "../components/Homecomp/Timeline"
-
+ import teacher from "../assets/media/teacher.webp"
+import Footers from '../components/Footers';
 function Home() {
   const htmlCode = `<!DOCTYPE html>
   <html lang="en">
@@ -24,9 +25,9 @@ function Home() {
   </body>
   </html>`
   return (
-    <div className=' flex flex-col items-center'>
+    <div className=' flex flex-col items-center w-full'>
       {/* Section 1 */}
-      <div className='  flex flex-col items-center mx-auto w-11/12 '>
+      <div className='  flex flex-col overflow-x-hidden items-center   '>
         {/* Image se upar wala part */}
         <div className='flex flex-col mx-auto items-center  gap-y-2 text-slate-200'>
           <Link to="/signup" className="group">
@@ -53,12 +54,12 @@ function Home() {
               <Button active={false} linkto={"/contactus"}>Book A Demo</Button>
           </div>
         </div>
-        <div className="relative w-3/5 mt-5 mb-5 h-auto   md:mt-8 md:w-4/5 md:mb-8 md:h-auto lg:mt-8 lg:w-4/5 lg:mb-8 lg:h-auto  ">
+        <div className="relative w-3/5 mt-5 mb-5 h-auto   md:mt-8 md:w-3/5 md:mb-8 md:h-auto lg:mt-8 lg:w-3/5 lg:mb-8 lg:h-auto  ">
         <video muted loop autoPlay className="banner">
           <source src={Banner} type="video/mp4" />
         </video>
       </div>
-      <div className=' flex flex-col  md:flex md:flex-row md:justify-center md:gap-x-60 md:mt-5  lg:flex lg:flex-row lg:justify-between lg:gap-x-60 lg:mt-5 lg:w-10/12'>
+      <div className=' flex flex-col mx-4  md:flex md:flex-row md:justify-center md:gap-x-60 md:mt-5  lg:flex lg:flex-row lg:justify-between lg:gap-x-60 lg:mt-5 lg:w-10/12'>
         <div className=' w-[100%] md:w-[35%] lg:[35%]'>
           <Contentcard 
           heading = {<>
@@ -92,7 +93,7 @@ function Home() {
           
         </div>
       </div>
-      <div className='flex flex-col  mt-4 md:flex md:flex-row md:justify-center md:gap-x-60 md:mt-5  lg:flex lg:flex-row lg:justify-between lg:gap-x-60 lg:mt-20 lg:w-10/12 '>
+      <div className='flex flex-col mx-4  mt-4 md:flex md:flex-row md:justify-center md:gap-x-60 md:mt-5  lg:flex lg:flex-row lg:justify-between lg:gap-x-60 lg:mt-20 lg:w-10/12 '>
        
        
       <div className='code-card-2 w-[30%] bg-slate-700 bg-opacity-5 hidden md:block'>
@@ -131,7 +132,7 @@ function Home() {
       </div>
 
       {/* Srction 2 */}
-      <div className= 'bg-slate-50 text-slate-800 flex flex-col  w-full'>
+      <div className=  'bg-slate-50 overflow-x-hidden text-slate-800 flex flex-col  w-full mb-6'>
         
           <div className=' sec-2bg flex flex-row items-center justify-center gap-x-24  '>
           <div>
@@ -157,6 +158,7 @@ function Home() {
               <div className=' w-[100%] md:w-[40%] lg:w-[40%]'>
                   <p className='font-semibold'> Acquire Skills on your terms. For being competitive in todays's modern world you need more than ordinary something exceptional </p>
               </div>
+              
 
             </div>
                <div>
@@ -166,13 +168,34 @@ function Home() {
                </div>
         
           </div>
-          <div className='w-9/12'>
+          <div className='w-9/12 mb-12'>
           <Timeline/>
           </div>
          
           </div>
       </div>
       {/* Section 3 */}
+      <div className=' overflow-x-hidden flex flex-col items-center gap-y-8 mt-8 md:flex md:flex-row lg:flex md:gap-x-8 lg:flex-row lg:justify-center lg:items-center lg:gap-x-8 mb-12'>
+      <div className=' sm:w-[75%] mx-6 '>
+    <img src={teacher} alt="Teacher" className="w-full h-auto"/>
+  </div>
+  <div className='flex flex-col mx-6  gap-y-4'>
+    <div>
+      <p className='lg:text-3xl md:text-2xl text-xl font-bold text-slate-100 w-2 '> Become <span className='text-cyan-400 font-bold'> Instructor</span></p>
+    </div>
+    <div>
+      <p className='text-slate-400 text-xs md:text-sm lg:text-sm  w-[75%]'>Become a instructor and share your knowledge with the future of our nation </p>
+    </div>
+    <div>
+      <Button active={true} linkto={"/signup"}>
+      Start teaching today
+      </Button>
+    </div>
+  </div>
+</div>
+    <div className='w-[100%] overflow-x-hidden'>
+      <Footers/>
+    </div>
     </div>
   );
 }
