@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .spinner {
     transform: rotateZ(45deg);
     perspective: 1000px;
@@ -74,10 +70,3 @@
       box-shadow: .2em -.2em 0 0 currentcolor;
     }
   }
-
-  /* Hide the spin buttons for WebKit browsers */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}

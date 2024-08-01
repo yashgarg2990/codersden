@@ -6,7 +6,7 @@ function Numberfield({
   typename,
   id,
   name,
-  valuename,
+  value,
   setfunction,
   placeholder,
 }) {
@@ -29,7 +29,7 @@ function Numberfield({
         type={typename}
         id={id}
         name={name}
-        value={valuename}
+        value={value}
         onChange={handleChange}
         className="px-3 py-2  border bg-slate-800 rounded-md text-white font-medium text-sm 2xl:text-base w-full 
          [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none

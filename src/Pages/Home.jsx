@@ -32,7 +32,7 @@ function Home() {
         <div className='flex flex-col mx-auto items-center  gap-y-2 text-slate-200'>
           <Link to="/signup" className="group">
             <div className='flex flex-row bg-slate-800 rounded-full hover:scale-105 duration-300 px-5 py-2 items-center gap-x-1 mt-16 group-hover:bg-slate-700 '>
-              <p className="group-hover:text-slate-200 text-sm font-medium">Become an Instructor</p>
+              <p className="group-hover:text-slate-200 text-base font-medium">Become an Instructor</p>
               <FaArrowRightLong className="group-hover:text-slate-200" />
             </div>
           </Link>
@@ -54,9 +54,9 @@ function Home() {
               <Button active={false} linkto={"/contactus"}>Book A Demo</Button>
           </div>
         </div>
-        <div className="relative w-3/5 mt-5 mb-5 h-auto   md:mt-8 md:w-3/5 md:mb-8 md:h-auto lg:mt-8 lg:w-3/5 lg:mb-8 lg:h-auto  ">
-        <video muted loop autoPlay className="banner">
-          <source src={Banner} type="video/mp4" />
+        <div className="video w-3/5 mt-5 mb-5 h-auto   md:mt-8 md:w-3/5 md:mb-8 md:h-auto lg:mt-8 lg:w-3/5 lg:mb-8 lg:h-auto  ">
+        <video muted loop autoPlay className="banner" >
+          <source src={Banner} type="video/mp4" loading='lazy' />
         </video>
       </div>
       <div className=' flex flex-col mx-4  md:flex md:flex-row md:justify-center md:gap-x-60 md:mt-5  lg:flex lg:flex-row lg:justify-between lg:gap-x-60 lg:mt-5 lg:w-10/12'>
@@ -87,16 +87,16 @@ function Home() {
 
         </div>
        
-        <div className=' code-card w-[100%] md:w-[30%] lg:w-[30%] bg-slate-700 bg-opacity-5 ' >
+        <div className=' code-card w-[100%] md:w-[30%] lg:w-[30%] bg-richblack-800 bg-opacity-0 ' >
 
            <Codeblocks  code ={`<<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport">\n<title>My First Web Page</title>\n</head>\n<body>\n<h1>hello world</h1>\n<p>Learn coding by experts</p>\n</body>\n</html>>`} />
           
         </div>
       </div>
-      <div className='flex flex-col mx-4  mt-4 md:flex md:flex-row md:justify-center md:gap-x-60 md:mt-5  lg:flex lg:flex-row lg:justify-between lg:gap-x-60 lg:mt-20 lg:w-10/12 '>
+      <div className='flex flex-col mx-4  mt-4 mb-8 md:flex md:flex-row md:justify-center md:gap-x-60 md:mt-5  lg:flex lg:flex-row lg:justify-between lg:gap-x-60 lg:mt-20 lg:w-10/12 '>
        
        
-      <div className='code-card-2 w-[30%] bg-slate-700 bg-opacity-5 hidden md:block'>
+      <div className='code-card-2 w-[30%] bg-slate-700 bg-opacity-0 hidden md:block'>
     <Codeblocks code={`<<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport">\n<title>My First Web Page</title>\n</head>\n<body>\n<h1>hello world</h1>\n<p>Learn coding by experts</p>\n</body>\n</html>>`} />
 </div>
         <div className='  w-[100%] mb-5 md:w-[35%] lg:[35%]'>

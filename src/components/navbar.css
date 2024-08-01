@@ -1,0 +1,18 @@
+/* Add this to your CSS file */
+ul {
+  max-height: calc(5 * 3rem); /* Adjust this value according to your item height */
+  overflow-y: auto;
+}
+
+ul::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* Color of the scrollbar */
+  border-radius: 4px; /* Round corners of the scrollbar */
+}
+
+ul::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* Color of the track */
+}

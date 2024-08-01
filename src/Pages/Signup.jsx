@@ -6,12 +6,16 @@ import axios from 'axios';
 import home2 from "../assets/media/home-2.jpg";
 import Numberfield from '../components/Numberfield';
 import "./home.css";
+import { useDispatch } from 'react-redux';
+import { setToken , setLoading} from '../slices/authSlice';
+import { toast } from "react-hot-toast"
 
 function Signup() {
   const [selected, setSelected] = useState('Student');
   const [passtype, setPasstype] = useState('password');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const dispatch = useDispatch()
   const navigate = useNavigate();  // useNavigate instead of useHistory
 
   const togglePasswordVisibility = () => {
@@ -20,33 +24,43 @@ function Signup() {
 
   const submithandler = async (e) => {
     e.preventDefault();
+    const toastId = toast.loading("Loading...")
+    dispatch(setLoading(true))
     try {
       const response = await axios.post('http://localhost:4000/api/v1/auth/login', {
         Email: email,
         Password: password,
         AccountType: selected
       });
+     
+     
 
       if (response.data.success) {
+        toast.success("Login Successful")
+        dispatch(setToken(response.data.token))
         navigate('/');  // Redirect to home page or desired route on success
       } else if (response.data.success === false) {
-        window.alert(`Submission failed: ${response.data.message}`);
+        toast.error(`${response.data.message}`)
+      
       }
     } catch (error) {
       console.error('An error occurred', error);
-      window.alert('An error occurred. Please try again.');
+     
+      toast.error("Login failed")
     }
+    dispatch(setLoading(false))
+    toast.dismiss(toastId)
   };
 
   return (
     <div className='flex flex-row items-center min-h-screen'>
-    <div className='  w-screen  sm:mr-auto md:mr-12'>
-      <div className='flex flex-row lg:justify-center lg:content-center md:justify-center md:content-center sm:justify-center sm:content-center  items-center lg:gap-x-8 md:gap-x-0 w-full md:mx-6'>
+    <div className='  w-screen '>
+      <div className='flex flex-row justify-center    '>
 
-        <div className='flex flex-col  rounded-2xl bg-slate-800 2xl:w-[40%] lg:w-[32%] sm:w-[75%] md:w-[75%] '>
-        <form onSubmit={submithandler} className='w-full px-10 pt-5 pb-5 '> 
+        <div className='flex flex-col  rounded-2xl bg-slate-900  lg:w-2/5 md:w-4/5 sm:w-11/12 '>
+        <form onSubmit={submithandler} className='w-full px-8 py-8 '> 
           <div>
-            <p className=' 2xl:text-7xl lg:text-3xl md:text-2xl sm:text-xl text-white font-bold'>
+            <p className='  text-3xl text-white font-bold'>
               Welcome Back
             </p>
           </div>
@@ -103,7 +117,7 @@ function Signup() {
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="px-3 py-2 2xl:py-4 border bg-slate-700 rounded-md text-white  font-medium text-sm 2xl:text-xl w-11/12 "
+          className="px-3 py-2  border bg-slate-700 rounded-md text-white  font-medium text-xl w-11/12 "
           style={{ border: 'none' }}
           placeholder="Enter your email address"
           autoComplete="off"
@@ -122,7 +136,7 @@ function Signup() {
               name="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="px-3 py-2 2xl:py-4 bg-slate-700 rounded-md text-white text-sm font-medium 2xl:text-xl w-full"
+              className="px-3 py-2  bg-slate-700 rounded-md text-white text-xl w-full"
               style={{ border: 'none' }}
               placeholder="Enter your Password"
               autoComplete="off"
@@ -140,7 +154,7 @@ function Signup() {
       </div>
       <div className='flex flex-row justify-end mt-2 w-11/12 '>
         <div>
-            <Link to={"/reset-password"}>
+            <Link to={"/forgotPassword"}>
             <p className='text-slate-300 text-xs 2xl:text-base '>Forgot Password?</p>
             </Link>
         </div>

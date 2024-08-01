@@ -3,7 +3,7 @@ import React from 'react'
 function Footers() {
   return (
     <div className='border-t-2 border-white'>
-      <div class="w-full min-h-2.5 flex items-center justify-center bg-slate-900">
+      <div class="w-full min-h-2.5 flex items-center justify-center bg-richblack-900">
         <div class="md:w-2/3 w-full px-4 text-white flex flex-col mt-6">
             <div class="w-full lg:text-7xl md:text-7xl text-5xl  font-bold">
                 <h1 class="w-full md:w-2/3 ">How can we help you. get

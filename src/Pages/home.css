@@ -1,9 +1,9 @@
-.relative {
+.video {
     position: relative;
     z-index:2;
   }
   
-  .relative::after {
+  .video::after {
     content: '';
     background-color: white;
     position: absolute;
@@ -14,7 +14,7 @@
     z-index: -1;
   }
  
-  .relative::before {
+  .video::before {
     content: '';
     background-color: cyan; /* Assuming you want a red glow effect */
     position: absolute;
