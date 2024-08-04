@@ -9,6 +9,7 @@ import "./home.css";
 import { useDispatch } from 'react-redux';
 import { setToken , setLoading} from '../slices/authSlice';
 import { toast } from "react-hot-toast"
+import {setProfile} from '../slices/profileSlice'
 
 function Signup() {
   const [selected, setSelected] = useState('Student');
@@ -38,7 +39,11 @@ function Signup() {
       if (response.data.success) {
         toast.success("Login Successful")
         dispatch(setToken(response.data.token))
-        navigate('/');  // Redirect to home page or desired route on success
+         
+        dispatch(setProfile(response.data.user));
+        localStorage.setItem("token", JSON.stringify(response.data.token))
+      localStorage.setItem("user", JSON.stringify(response.data.user))
+        navigate('/dashboard');  // Redirect to home page or desired route on success
       } else if (response.data.success === false) {
         toast.error(`${response.data.message}`)
       
@@ -117,10 +122,10 @@ function Signup() {
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="px-3 py-2  border bg-slate-700 rounded-md text-white  font-medium text-xl w-11/12 "
+          className="px-3 py-2  bg-slate-700 rounded-md text-white text-base w-11/12"
           style={{ border: 'none' }}
           placeholder="Enter your email address"
-          autoComplete="off"
+        
           required
         />
       </div>
@@ -136,7 +141,7 @@ function Signup() {
               name="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="px-3 py-2  bg-slate-700 rounded-md text-white text-xl w-full"
+              className="px-3 py-2  bg-slate-700 rounded-md text-white text-base w-full"
               style={{ border: 'none' }}
               placeholder="Enter your Password"
               autoComplete="off"

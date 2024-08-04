@@ -52,7 +52,7 @@ function Footers() {
                     </div>
                 </div>
                 <hr class="border-gray-600"/>
-                <p class="w-full text-center my-12 text-gray-400">Copyright © 2020 Coders Den</p>
+                <p class="w-full text-center my-12 text-gray-400">Copyright © 2024 Coders Den</p>
             </div>
         </div>
     </div>

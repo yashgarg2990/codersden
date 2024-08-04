@@ -1,9 +1,10 @@
 import { useDispatch } from "react-redux"
-import { setLoading } from "../../slices/authSlice"
+import { setLoading, setSignupData, setToken } from "../../slices/authSlice"
 import { apiConnector } from "../apiconnector"
 import { endpoints } from "../apis"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
+import { setProfile } from "../../slices/profileSlice"
 const {
     SENDOTP_API,
     SIGNUP_API,
@@ -146,4 +147,16 @@ export const resetPassword = (Password , ConfirmPassword  , Token) =>{
     }
     dispatch(setLoading(false))
   }
+}
+
+export const logout = (navigate) =>{
+      return dispatch =>{
+        dispatch(setToken(null));
+        dispatch(setSignupData(null));
+        dispatch(setProfile(null));
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        toast.success("Logged out")
+        navigate('/')
+      }
 }
