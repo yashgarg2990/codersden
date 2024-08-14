@@ -15,10 +15,10 @@ function Dashboard() {
    
     }
   return (
-    <div className=' h-screen relative flex '>
+    <div className=' h-screen relative flex  gap-x-8'>
       <Sidebar/>
-      <div className='h-[calc(100vh - 3.5rem)] overflow-auto'>
-        <div className='mx-auto w-11/12 max-w-[1000px] py-10'>
+      <div className='h-[calc(100vh - 3.5rem)] overflow-auto w-4/5 sm:w-full'>
+        <div className='mx-6 w-11/12  py-10'>
         <Outlet/>
         </div>
       </div>

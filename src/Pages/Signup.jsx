@@ -6,7 +6,7 @@ import axios from 'axios';
 import home2 from "../assets/media/home-2.jpg";
 import Numberfield from '../components/Numberfield';
 import "./home.css";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setToken , setLoading} from '../slices/authSlice';
 import { toast } from "react-hot-toast"
 import {setProfile} from '../slices/profileSlice'
@@ -22,6 +22,7 @@ function Signup() {
   const togglePasswordVisibility = () => {
     setPasstype(passtype === 'text' ? 'password' : 'text');
   };
+  const USER = useSelector((state) => state.profile.user)
 
   const submithandler = async (e) => {
     e.preventDefault();
@@ -39,11 +40,15 @@ function Signup() {
       if (response.data.success) {
         toast.success("Login Successful")
         dispatch(setToken(response.data.token))
+        const userImage = response.data?.user?.Image
+        ? response.data.user.Image
+        : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.FirstName} ${response.data.user.LastName}`
          
-        dispatch(setProfile(response.data.user));
+        dispatch(setProfile({...response.data.user , Image : userImage}));
+        console.log(USER)
         localStorage.setItem("token", JSON.stringify(response.data.token))
       localStorage.setItem("user", JSON.stringify(response.data.user))
-        navigate('/dashboard');  // Redirect to home page or desired route on success
+        navigate('/dashboard/my-profile');  // Redirect to home page or desired route on success
       } else if (response.data.success === false) {
         toast.error(`${response.data.message}`)
       

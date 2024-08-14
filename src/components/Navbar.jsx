@@ -10,6 +10,7 @@ import { BsChevronDown } from "react-icons/bs"
 import { apiConnector } from '../services/apiconnector'
 import { categories } from '../services/apis'
 import { useState ,useEffect } from 'react'
+import ProfileDropdown from './auth/ProfileDropdown'
 
 
 function Navbar() {
@@ -104,6 +105,11 @@ function Navbar() {
             </nav>
         
          <div className='hidden items-center gap-x-4 md:flex'>
+             {
+              user && (
+                <ProfileDropdown/>
+              )
+             }
            {
             user && user?.account_type!== ACCOUNT_TYPE.INSTRUCTOR && (
               <Link to="/dashboard/cart" className="relative">
