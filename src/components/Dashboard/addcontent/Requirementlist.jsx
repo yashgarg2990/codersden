@@ -15,7 +15,7 @@ export default function RequirementsField({
 
   useEffect(() => {
     if (editCourse) {
-      setRequirementsList(course?.instructions)
+      setRequirementsList(course?.Instructions)
     }
     register(name, { required: true, validate: (value) => value.length > 0 })
     // eslint-disable-next-line react-hooks/exhaustive-deps

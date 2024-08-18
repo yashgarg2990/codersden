@@ -42,14 +42,14 @@ function CourseInformation() {
     // if form is in edit mode
     if (editCourse) {
       // console.log("data populated", editCourse)
-      setValue("courseTitle", course.courseName)
-      setValue("courseShortDesc", course.courseDescription)
-      setValue("coursePrice", course.price)
-      setValue("courseTags", course.tag)
-      setValue("courseBenefits", course.whatYouWillLearn)
-      setValue("courseCategory", course.category)
-      setValue("courseRequirements", course.instructions)
-      setValue("courseImage", course.thumbnail)
+      setValue("courseTitle", course.CourseName)
+      setValue("courseShortDesc", course.CourseDescription)
+      setValue("coursePrice", course.Price)
+      setValue("courseTags", course.Tag)
+      setValue("courseBenefits", course.WhatYouWillLearn)
+      setValue("courseCategory", course.Category)
+      setValue("courseRequirements", course.Instructions)
+      setValue("courseImage", course.Thumbnail)
     }
     getCategories()
 
@@ -87,31 +87,31 @@ function CourseInformation() {
         if (isFormUpdated()) {
             const currentValues = getValues();
 
-            formData.append("courseId", course._id);
+            formData.append("CourseId", course._id);
 
-            if (currentValues.courseTitle !== course.courseName && data.courseTitle) {
-                formData.append("courseName", data.courseTitle);
+            if (currentValues.courseTitle !== course.CourseName && data.courseTitle) {
+                formData.append("CourseName", data.courseTitle);
             }
-            if (currentValues.courseShortDesc !== course.courseDescription && data.courseShortDesc) {
-                formData.append("courseDescription", data.courseShortDesc);
+            if (currentValues.courseShortDesc !== course.CourseDescription && data.courseShortDesc) {
+                formData.append("CourseDescription", data.courseShortDesc);
             }
-            if (currentValues.coursePrice !== course.price && data.coursePrice) {
-                formData.append("price", data.coursePrice);
+            if (currentValues.coursePrice !== course.Price && data.coursePrice) {
+                formData.append("Price", data.coursePrice);
             }
-            if (currentValues.courseTags.toString() !== course.tag.toString() && data.courseTags) {
-                formData.append("tag", JSON.stringify(data.courseTags));
+            if (currentValues.courseTags.toString() !== course.Tag.toString() && data.courseTags) {
+                formData.append("Tag", JSON.stringify(data.courseTags));
             }
-            if (currentValues.courseBenefits !== course.whatYouWillLearn && data.courseBenefits) {
-                formData.append("whatYouWillLearn", data.courseBenefits);
+            if (currentValues.courseBenefits !== course.WhatYouWillLearn && data.courseBenefits) {
+                formData.append("WhatYouWillLearn", data.courseBenefits);
             }
-            if (currentValues.courseCategory._id !== course.category._id && data.courseCategory) {
-                formData.append("category", data.courseCategory);
+            if (currentValues.courseCategory._id !== course.Category._id && data.courseCategory) {
+                formData.append("Category", data.courseCategory);
             }
-            if (currentValues.courseRequirements.toString() !== course.instructions.toString() && data.courseRequirements) {
-                formData.append("instructions", JSON.stringify(data.courseRequirements));
+            if (currentValues.courseRequirements.toString() !== course.Instructions.toString() && data.courseRequirements) {
+                formData.append("Instructions", JSON.stringify(data.courseRequirements));
             }
-            if (currentValues.courseImage !== course.thumbnail && data.courseImage) {
-                formData.append("thumbnailImage", data.courseImage);
+            if (currentValues.courseImage !== course.Thumbnail && data.courseImage) {
+                formData.append("ThumbnailImage", data.courseImage);
             }
 
             // Check if formData has any entries
@@ -145,10 +145,11 @@ function CourseInformation() {
         setLoading(true);
         const result = await addCourseDetails(formData, token);
         setLoading(false);
-        if (result) {
-            dispatch(setStep(2));
-            dispatch(setCourse(result));
-        }
+        console.log(result);
+          if(result){dispatch(setStep(2));
+            dispatch(setCourse(result));}
+            
+        
     }
 };
 
@@ -264,7 +265,7 @@ function CourseInformation() {
         register={register}
         setValue={setValue}
         errors={errors}
-        editData={editCourse ? course?.thumbnail : null}
+        editData={editCourse ? course?.Thumbnail : null}
       />
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseBenefits">
@@ -303,6 +304,7 @@ function CourseInformation() {
         <IconBtn
           disabled={loading}
           text={!editCourse ? "Next" : "Save Changes"}
+          type={"submit"}
         >
           <MdNavigateNext />
         </IconBtn>

@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast"
 import { IoAddCircleOutline } from "react-icons/io5"
 import { MdNavigateNext } from "react-icons/md"
 import { useDispatch, useSelector } from "react-redux"
+import NestedView from "./NestedView"
 
 import {setCourse , setEditCourse , setStep} from "../../../slices/courseSlice"
 import IconBtn from "../../IconBtn"
@@ -22,15 +23,15 @@ export default function CourseBuilderForm() {
         let result 
         if (editSectionName) { 
             result = await updateSection({
-                sectionName: data.sectionName ,
-                sectionId : editSectionName ,
-                CourseID  : course._id
+                SectionName: data.sectionName ,
+                SectionId : editSectionName ,
+                CourseId  : course._id
             } ,token)
         }
         else  {
             result = await createSection({
                 SectionName : data.sectionName ,
-                courseId :  course._id
+                CourseID :  course._id
             }, token)
         }
         if(result) {
@@ -44,22 +45,22 @@ export default function CourseBuilderForm() {
         setEditSectionName(null)
         setValue("sectionName", "")
       }
-      const handleChangeEditSectionName = (sectionId, sectionName) => {
-        if (editSectionName === sectionId) {
+      const handleChangeEditSectionName = (SectionId, SectionName) => {
+        if (editSectionName === SectionId) {
           cancelEdit()
           return
         }
-        setEditSectionName(sectionId)
-        setValue("sectionName", sectionName)
+        setEditSectionName(SectionId)
+        setValue("sectionName", SectionName)
       }
 
       const goToNext = () => {
-        if (course.courseContent.length === 0) {
+        if (course?.CourseContent.length === 0) {
           toast.error("Please add atleast one section")
           return
         }
         if (
-          course.courseContent.some((section) => section.subSection.length === 0)
+          course?.CourseContent.some((Section) => Section.SubSection.length === 0)
         ) {
           toast.error("Please add atleast one lecture in each section")
           return
@@ -84,7 +85,7 @@ export default function CourseBuilderForm() {
               disabled={loading}
               placeholder="Add a section to build your course"
               {...register("sectionName", { required: true })}
-              className="form-style w-full"
+              className="form-style w-full py-2 px-3 bg-slate-900 rounded-md  text-white border border-solid border-white focus:outline-none focus:border-amber-300"
             />
             {errors.sectionName && (
               <span className="ml-2 text-xs tracking-wide text-pink-200">
@@ -113,7 +114,7 @@ export default function CourseBuilderForm() {
           </div>
         </form>
 
-        {course.courseContent.length > 0 && (
+        {course?.CourseContent.length > 0 && (
         <NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
       )}
       {/* Next Prev Button */}
