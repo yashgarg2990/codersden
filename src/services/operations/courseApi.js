@@ -289,6 +289,7 @@ export const getFullDetailsOfCourse = async (CourseId, token) => {
       throw new Error(response.data.message)
     }
     result = response?.data?.data
+    console.log("this is reuslt from get full detials of course ",result)
   } catch (error) {
     console.log("COURSE_FULL_DETAILS_API API ERROR............", error)
     result = error.response.data
@@ -349,3 +350,27 @@ export const createRating = async (data, token) => {
   toast.dismiss(toastId)
   return success
 }
+
+export const fetchCourseDetails = async(courseId) => {
+  const toastId = toast.loading("Loading...")
+  let result  = null 
+  try{
+
+    const response = await apiConnector("POST" , COURSE_DETAILS_API , {
+      CourseId:courseId
+    })
+    console.log("COURSE_DETAILS_API API RESPONSE............", response)
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    result = response?.data?.data
+    console.log(" Printing reusult from fetch course details function : ",result)
+  }
+  catch (error) {
+    console.log("GET_ALL_COURSE_API API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+

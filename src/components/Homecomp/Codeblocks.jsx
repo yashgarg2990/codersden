@@ -15,15 +15,15 @@ function Codeblocks({ code }) {
             sequence={[
               code,
               2000, // Wait for 4 seconds after typing the code
-              () => document.querySelector('.code-display').innerText = '', // Clear the code
-              100, // Wait for 1 second before retyping
-              code // Retype the code
+              "" // Retype the code
             ]}
             repeat={Infinity}
-             
+             cursor={true}
             wrapper="pre"
             style={{ display: 'block' }}
             className="code-display"
+            omitDeletionAnimation={true}
+        
           />
         </div>
       </div>

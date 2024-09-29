@@ -1,4 +1,5 @@
 import IconBtn from "./IconBtn"
+import React from "react"
 
 export default function ConfirmationModal({ modalData }) {
   return (

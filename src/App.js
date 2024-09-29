@@ -19,7 +19,11 @@ import { useSelector } from 'react-redux';
 import AddCourse from './components/Dashboard/addcontent/AddCourse';
 import MyCourses from './components/Dashboard/MyCourses';
 import EditCourse from './components/Dashboard/editcrse/EditCourse';
-
+import Catalog from './Pages/Catalog'
+import CourseDetails from './Pages/CourseDetails';
+import ViewCourse from './Pages/ViewCourse';
+import VideoDetails from './components/viewCourse/VideoDetails';
+import Instructor from './components/Dashboard/Instructor_Dashboard/Instructor';
 
 
 
@@ -41,6 +45,8 @@ function App() {
           <Route path="/reset-password/:id" element={<ResetPssword/>}/>
           <Route path="/verify-mail" element={<Verifymail/>}/>
           <Route path="/about" element={<Aboutus/>}/>
+            <Route path="/catalog/:catalogName"  element={<Catalog/>}/> 
+            <Route path = "courses/:courseId" element ={<CourseDetails/>}/>
           <Route
            element={ <PrivateRoute>
             <Dashboard/>
@@ -64,11 +70,31 @@ function App() {
           <Route path="dashboard/add-course" element={<AddCourse />} />
           <Route path="dashboard/my-courses" element = {<MyCourses/>}/>
           <Route path="dashboard/edit-course/:courseId" element={<EditCourse/>} />
+          <Route path="dashboard/instructor" element={<Instructor />} />
           
           </>
         )
       }
           </Route>
+          <Route element={
+        <PrivateRoute>
+          <ViewCourse />
+        </PrivateRoute>
+      }>
+
+      {
+        user?.AccountType === ACCOUNT_TYPE.STUDENT && (
+          <>
+          <Route 
+            path="view-course/:CourseId/section/:SectionId/sub-section/:SubSectionId"
+            element={<VideoDetails />}
+          />
+          </>
+        )
+      }
+
+      </Route>
+
           
           
 

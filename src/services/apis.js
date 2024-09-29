@@ -52,11 +52,12 @@ export const courseEndpoints = {
 // CATAGORIES API
 export const categories = {
   CATEGORIES_API: BASE_URL + "/course/get-all-category",
+  CAT_API: BASE_URL + "/course/get-category"
 }
 
 // CATALOG PAGE DATA
 export const catalogData = {
-  CATALOGPAGEDATA_API: BASE_URL + "/course/get-all-category",
+  CATALOGPAGEDATA_API: BASE_URL + "/course/category-page-details",
 }
 // CONTACT-US API
 // export const contactusEndpoint = {

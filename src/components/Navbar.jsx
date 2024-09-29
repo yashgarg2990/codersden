@@ -25,7 +25,8 @@ function Navbar() {
       setLoading(true);
       try {
         const res = await apiConnector("GET", categories.CATEGORIES_API);
-        console.log(res.data.data); // Log the fetched data
+        console.log("printing  navbar categories ----" , res.data.data)
+       // Log the fetched data
         setSubLinks(res.data.data);
       } catch (error) {
         console.log("Could not fetch Categories.", error);
@@ -67,9 +68,9 @@ function Navbar() {
                         ) : (subLinks && subLinks.length) ? (
                           <>
                               
-                                {subLinks?.map((subLink, i) => (
+                              {subLinks?.map((subLink, i) => (
                                   <Link
-                                    to={`/catalog/${subLink.split(" ").join("-").toLowerCase()}`}
+                                    to={`/catalog/${subLink.split(" ").join("-")}`}
                                     className="rounded-lg bg-transparent py-2 pl-4 hover:bg-richblack-50"
                                     key={i}
                                   >
