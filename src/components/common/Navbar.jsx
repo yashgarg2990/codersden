@@ -4,12 +4,16 @@ import { BsChevronDown } from "react-icons/bs"
 import { useSelector } from "react-redux"
 import { Link, matchPath, useLocation } from "react-router-dom"
 
-import logo from "../../assets/Logo/Logo-Full-Light.png"
+import logo from "../../assets/Logo/download-removebg-preview.png"
 import { NavbarLinks } from "../../data/navbar-links"
 import { apiConnector } from "../../services/apiconnector"
 import { categories } from "../../services/apis"
 import { ACCOUNT_TYPE } from "../../utils/constants"
 import ProfileDropdown from "../core/Auth/ProfileDropDown"
+import AIHelpSidebar from "./AIHelpSidebar"
+
+
+
 
 function Navbar() {
   const { token } = useSelector((state) => state.auth)
@@ -19,6 +23,9 @@ function Navbar() {
 
   const [subLinks, setSubLinks] = useState([])
   const [loading, setLoading] = useState(false)
+
+  // for AI button 
+  const [aiSidebarOpen , setAISidebarOpen] = useState(false)
 
   useEffect(() => {
     ;(async () => {
@@ -114,6 +121,13 @@ function Navbar() {
         </nav>
         {/* Login / Signup / Dashboard */}
         <div className="hidden items-center gap-x-4 md:flex">
+          <button
+    className="  rounded-full  text-white ml-2 flex items-center"
+    onClick={() => setAISidebarOpen(true)}
+    title="AI-Help"
+  >
+    <img src={logo} alt="AI-Help" className="h-9 w-9 object-contain" />
+  </button>
           {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
               <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
@@ -144,6 +158,8 @@ function Navbar() {
           <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
         </button>
       </div>
+      {/* AI Help Sidebar */}
+      <AIHelpSidebar open={aiSidebarOpen} onClose={() => setAISidebarOpen(false)} />
     </div>
   )
 }
